@@ -1,41 +1,36 @@
-#include <stdio.h>
-#include <string.h>
+#include<stdio.h>
+#include<string.h>
 
-#define MAX 100
+char s[100];
+int top=-1;
 
-char stack[MAX];
-int top = -1;
-
-void push(char ch) {
-    if (top == MAX - 1) {
-        printf("Stack Overflow\n");
-    } else {
-        top++;
-        stack[top] = ch;
+void push(char x){
+    if(top>=99){
+        printf("stack overflow");
     }
+    top++;
+    s[top]=x;
+}
+int pop(){
+    if(top<0){
+        printf("stack underflow");
+        return -1;
+    }
+    top--;
 }
 
-char pop() {
-    if (top == -1) {
-        printf("Stack Underflow\n");
-        return '\0';
-    } else {
-        return stack[top--];
-    }
-}
-
-int main() {
-    char str[MAX];
-    int i;
-
-    printf("Enter a string: ");
-    gets(str); 
-
-    for (i = 0; str[i] != '\0'; i++) {
+void main(){
+   char s[100];
+   int i;
+   
+   printf("enter string:");
+   scanf("%s",s);
+   
+   for (i = 0; i < strlen(str); i++) {
         push(str[i]);
     }
 
-    for (i = 0; str[i] != '\0'; i++) {
+    for (i = 0; i < strlen(str); i++) {
         str[i] = pop();
     }
 
